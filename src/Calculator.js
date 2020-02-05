@@ -14,7 +14,7 @@ export default class Calculator extends React.Component {
     render() {
         return (
             <div>
-                <h1>The best calculator</h1>
+                <h1>Calculator by Aylor</h1>
                 <input 
                 type="number" 
                 value={this.state.num1}
@@ -31,12 +31,12 @@ export default class Calculator extends React.Component {
                 />
                 <br />
                 <br />
-                <button>+</button>
-                <button>-</button>
-                <button>*</button>
-                <button>/</button>
+                <button onClick={this._add}>+</button>
+                <button onClick={this._subtract}>-</button>
+                <button onClick={this._multiply}>*</button>
+                <button onClick={this._divide}>/</button>
                 <br />
-                <div></div>
+                <div>{this.state.result}</div>
 
             </div>
 
@@ -48,8 +48,33 @@ export default class Calculator extends React.Component {
     _updateNumber = (key, newNumber) => {
         this.setState({
             // use variable as a key with []
-            [key]: newNumber
+            [key]: parseInt(newNumber, 10)
 
+        });
+    }
+
+    // add function stores result of adding 
+    _add = () => {
+        this.setState({
+            result: this.state.num1 + this.state.num2
+        });
+    }
+
+    _subtract = () => {
+        this.setState({
+            result: this.state.num1 - this.state.num2
+        });
+    }
+
+    _multiply = () => {
+        this.setState({
+            result: this.state.num1 * this.state.num2
+        });
+    }
+
+    _divide = () => {
+        this.setState({
+            result: this.state.num1 % this.state.num2
         });
     }
 
